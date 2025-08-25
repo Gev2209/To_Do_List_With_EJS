@@ -10,11 +10,6 @@ routerUser.get('/user', readFile, (req, res) => {
     res.render(path.join(__dirname, '..', 'view', 'postUsers.ejs'), {title : "Helloo", users: users});
 })
 
-// routerUser.get('/user', readFile ,(req, res) => {
-//     const {users} = res.locals
-//     res.render(path.join(__dirname, '..', 'view', 'edit.ejs'), {users : users});
-// })
-
 
 routerUser.post('/user', readFile,async (req, res) => {
     const {users} = res.locals

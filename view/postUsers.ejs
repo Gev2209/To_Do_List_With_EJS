@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%-include('./helpersEjs/editHead', title) %>
-<body>
+<%-include('. /helpersEjs/editHead', title) %>
+
+  <body>
     <header>
-    <h2><a href="http://localhost:3000/"><i class="fa-solid fa-house"><span class="home">Home...</span></i></a></h2>
-  </header>
-  <main>
-    <div class="container">
-    <h1><i class="fa-regular fa-calendar-check"></i> To-Do List</h1>
+      <h2><a href="http://localhost:3000/"><i class="fa-solid fa-house"><span class="home">Home...</span></i></a></h2>
+    </header>
+    <main>
+      <div class="container">
+        <h1><i class="fa-regular fa-calendar-check"></i> To-Do List</h1>
 
-    <!-- Task Form -->
-    <form action="/user" method="post" id="todo-form">
-      <input type="text" id="taskInput" placeholder="Write your task..." name="name" required>
-      <button type="submit">Add</button>
-    </form>
+        
+        <form action="/user" method="post" id="todo-form">
+          <input type="text" id="taskInput" placeholder="Write your task..." name="name" required>
+          <button type="submit">Add</button>
+        </form>
 
-    
-    <ul id="taskList">
-      <% users.forEach((e) => { %>
-          <li><span><%= e.name %></span>
-          <span class="icons">
-            <a href="http://localhost:3000/users"><i class="fa-solid fa-pen"></i></a>
-          <form action="http://localhost:3000/user/delete/<%= e.id%>" method="post" id="delBtn">
-              <button class="trash"><i class="fa-solid fa-trash-can"></i></button> 
-          </form>
-          </span>
-        </li>
-      <% }) %>
-    </ul>
-  </div>
-  </main>
-    <!-- <a href="http://localhost:3000/">Back</a> -->
-</body>
+
+        <ul id="taskList">
+          <% users.forEach((e)=> { %>
+            <li><span>
+                <%= e.name %>
+              </span>
+              <span class="icons">
+                <a href="http://localhost:3000/users"><i class="fa-solid fa-pen"></i></a>
+                <form action="http://localhost:3000/user/delete/<%= e.id%>" method="post" id="delBtn">
+                  <button class="trash"><i class="fa-solid fa-trash-can"></i></button>
+                </form>
+              </span>
+            </li>
+            <% }) %>
+        </ul>
+      </div>
+    </main>
+  </body>
+
 </html>
