@@ -164,6 +164,11 @@ ul li .delete:hover {
   transform: scale(1.2);
 }
 
+
+
+/*/////////////////////////////////////////////////*/
+
+
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(-5px);}
   to {opacity: 1; transform: translateY(0);}

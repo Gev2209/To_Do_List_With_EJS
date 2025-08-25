@@ -7,7 +7,6 @@ const fs = require('fs').promises
 routerEditUsers.get('/edit/:id', readFile,(req, res) => {
     const {users} = res.locals
     const user = users.find((e) => e.id === Number(req.params.id))
-    console.log(user.id);
     
     res.render(path.join(__dirname, '..', 'view', 'edit.ejs'), {title : "Hello Gevorg", users : user});
 })
