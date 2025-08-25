@@ -6,7 +6,7 @@
 }
 a {
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 main {
@@ -17,7 +17,7 @@ main {
 }
 header {
   width: 100%;
-  background: #fff;
+  background: #00369998;
   padding: 15px 30px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-align: left;
@@ -34,6 +34,10 @@ body {
   /* display: flex;
   justify-content: center;
   align-items: center; */
+}
+
+.fa-calendar-check {
+    color: red;
 }
 
 .container {
@@ -64,6 +68,27 @@ form input {
   border-radius: 8px;
   outline: none;
   transition: 0.3s;
+}
+
+.fa-house {
+    color: #21c500;
+    font-size: 25px;
+}
+
+.home {
+    font-size: 12px;
+    position: absolute;
+    left: 54px;
+    top: 1px;
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 50%;
+    display: none;
+}
+
+.fa-house:hover .home {
+    border-bottom: 1px solid white;
+    display: block;
 }
 
 form input:focus {
