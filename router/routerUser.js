@@ -1,9 +1,31 @@
 const express = require('express')
 const routerUser = express.Router()
-const path = require('path')
+const path = require('path');
+const { readFile } = require('../middleware/readFile');
+const fs = require('fs').promises
 
-routerUser.get('/user', (req, res) => {
-    res.render(path.join(__dirname, '..', 'view', 'edit.ejs'), {title : "Hello Gevor"});
+
+routerUser.get('/user', readFile, (req, res) => {
+    const {users} = res.locals
+    res.render(path.join(__dirname, '..', 'view', 'postUsers.ejs'), {title : "Helloo", users: users});
 })
 
+// routerUser.get('/user', readFile ,(req, res) => {
+//     const {users} = res.locals
+//     res.render(path.join(__dirname, '..', 'view', 'edit.ejs'), {users : users});
+// })
+
+
+routerUser.post('/user', readFile,async (req, res) => {
+    const {users} = res.locals
+    const user = {
+        id: Date.now(),
+        name: req.body.name
+    }
+    users.push(user)
+
+    await fs.unlink(path.join(__dirname,'..', 'db', 'users.json'))
+    await fs.appendFile(path.join(__dirname,'..', 'db', 'users.json'), JSON.stringify(users))
+    res.redirect('/user')
+})
 module.exports = {routerUser}
