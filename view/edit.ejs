@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<%-include('. /helpersEjs/editHead', title) %>
-
+<%-include('./helpersEjs/editHead', title) %>
     <body>
         <header>
             <h2><a href="http://localhost:3000/user"><i class="fa-regular fa-address-card"><span
                             class="home">Home...</span></i></a></h2>
         </header>
-
+        <form action="http://localhost:3000/users/edit/<%= users.id %>" method="post">
+        <input type="text" name="name" value="<%= users.name %>">
+        <button type="submit">Save</button>
+    </form>
     </body>
 
 </html>
