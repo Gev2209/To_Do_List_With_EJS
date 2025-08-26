@@ -4,9 +4,11 @@ const path = require('path');
 const { readFile } = require('../middleware/readFile');
 const fs = require('fs').promises
 
+
+
 routerEditUsers.get('/edit/:id', readFile,(req, res) => {
     const {users} = res.locals
-    const user = users.find((e) => e.id === Number(req.params.id))
+    const user = users.find((e) => e.id === req.params.id)
     
     res.render(path.join(__dirname, '..', 'view', 'edit.ejs'), {title : "Hello Gevorg", users : user});
 })
@@ -15,7 +17,8 @@ routerEditUsers.get('/edit/:id', readFile,(req, res) => {
 
 routerEditUsers.post('/edit/:id', readFile, async(req, res) => {
     const {users} = res.locals
-    const user = users.find((e) => e.id === Number(req.params.id))
+    const user = users.find((e) => e.id === req.params.id)
+    
     if (user) {
         user.name = req.body.name
     }

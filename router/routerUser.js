@@ -3,7 +3,7 @@ const routerUser = express.Router()
 const path = require('path');
 const { readFile } = require('../middleware/readFile');
 const fs = require('fs').promises
-
+const bycript = require('bcryptjs')
 
 routerUser.get('/user', readFile, (req, res) => {
     const {users} = res.locals
@@ -13,9 +13,12 @@ routerUser.get('/user', readFile, (req, res) => {
 
 routerUser.post('/user', readFile,async (req, res) => {
     const {users} = res.locals
+    const body = req.body
+    const hashName = await bycript.hash(body.name, 10)
     const user = {
         id: crypto.randomUUID(),
-        name: req.body.name
+        // name: req.body.name
+        name: `${body.name} -> ${hashName}`
     }
     users.push(user)
 
