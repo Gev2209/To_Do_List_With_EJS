@@ -3,7 +3,8 @@ const routerUser = express.Router()
 const path = require('path');
 const { readFile } = require('../middleware/readFile');
 const fs = require('fs').promises
-const bycript = require('bcryptjs')
+const bycript = require('bcryptjs');
+const { cesarEncrypt } = require('../helpers/cesar_cipher');
 
 routerUser.get('/user', readFile, (req, res) => {
     const {users} = res.locals
@@ -18,7 +19,9 @@ routerUser.post('/user', readFile,async (req, res) => {
     const user = {
         id: crypto.randomUUID(),
         // name: req.body.name
-        name: `${body.name} -> ${hashName}`
+        // name: `${body.name} -> ${hashName}`
+        name: cesarEncrypt(body.name, 3),
+        token:`${body.name} -> ${hashName}`
     }
     users.push(user)
 
