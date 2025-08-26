@@ -14,7 +14,7 @@ routerUser.get('/user', readFile, (req, res) => {
 routerUser.post('/user', readFile,async (req, res) => {
     const {users} = res.locals
     const user = {
-        id: Date.now(),
+        id: crypto.randomUUID(),
         name: req.body.name
     }
     users.push(user)
